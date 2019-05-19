@@ -1,17 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-   
-  let(:user){ build(:user)}
 
+  let(:user){ build(:user)} 
 
   describe 'バリデーション' do
     it 'nameとemailとパスワードの値が設定されていれば、OK' do
-      expect(user.valid?).to eq(true)
+      expect(user.valid?).to eq(false)
     end
 
     it 'nameが空だとNG' do
-      user.username = ''
+      user.name = ''
       expect(user.valid?).to eq(false)
     end
 
