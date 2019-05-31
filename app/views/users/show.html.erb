@@ -1,1 +1,7 @@
 <%=@user.username %>のページです。
+
+<ol>
+  <%= render @posts %>
+</ol>
+
+ <%= will_paginate @posts %>
