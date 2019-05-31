@@ -24,7 +24,7 @@ gem 'uglifier', '>= 2.7.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-gem 'bootstrap', '~> 4.1.1'
+#gem 'bootstrap', '~> 4.3.1'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 # Use Redis adapter to run Action Cable in production
