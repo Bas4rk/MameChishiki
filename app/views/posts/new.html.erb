@@ -1,6 +1,7 @@
 <h1>新規投稿</h1>
-<%= form_for(@post) do |f| %>
-  <%= f.text_area :title, placeholder: "ここにタイトルを入力してください" %>
-  <%= f.text_area :content, placeholder: "ここにテキストを入力してください" %>
-  <%= f.submit "投稿", class: "btn btn-primary" %>
+<%= form_with model: @post, local:true  do |form| %>
+  <%= form.text_area :title, placeholder: "ここにタイトルを入力してください" %>
+  <%= form.text_area :content, placeholder: "ここにテキストを入力してください" %>
+  <%= form.file_field :image %>
+  <%= form.submit "投稿", class: "btn btn-primary" %>
 <% end %>

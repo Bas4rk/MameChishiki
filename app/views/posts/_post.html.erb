@@ -3,6 +3,9 @@
   <div class="card-body">
     <h4 class="card-title"><%= post.title %></h4>
     <p class="card-text"><%= post.content %></p>
+    <% if post.image.attached? %>
+  <%= image_tag post.image %> 
+<% end %>
   </div>
   <div class="card-footer">	
     <%= time_ago_in_words(post.created_at) %>前に作成
