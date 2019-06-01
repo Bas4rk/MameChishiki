@@ -20,6 +20,7 @@ end
 
 users = User.order(:created_at).take(6)
 50.times do |n|
+  title = "sampletitle#{n}"
   content = "sampletext#{n}"
-  users.each { |user| user.posts.create!(content: content)}
+  users.each { |user| user.posts.create!(title: title,content: content)}
 end
