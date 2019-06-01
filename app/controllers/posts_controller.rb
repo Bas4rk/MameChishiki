@@ -6,7 +6,8 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to root_url
+     # redirect_to root_url
+      redirect_to user_url(current_user)
     else
       render 'posts/new'
     end

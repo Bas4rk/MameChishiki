@@ -4,10 +4,11 @@
     <h4 class="card-title"><%= post.title %></h4>
     <p class="card-text"><%= post.content %></p>
     <% if post.image.attached? %>
-  <%= image_tag post.image %> 
-<% end %>
+      <%= image_tag(post.image, :class => "intense") %> 
+    <% end %>
   </div>
   <div class="card-footer">	
+    
     <%= time_ago_in_words(post.created_at) %>前に作成
   </div>
 </div>
