@@ -10,6 +10,14 @@ img{
 
 .navbar{
  width: 100%;
-position: fixed; 
+ position: fixed; 
+ z-index: 10;
+}
+
+#current-user{
+text-align: right;	
+float: right;
+ margin: 0 0 0 auto;
+ padding: 10px;
 }
 
