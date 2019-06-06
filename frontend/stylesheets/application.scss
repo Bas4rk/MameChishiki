@@ -10,8 +10,10 @@ img{
 
 .navbar{
  width: 100%;
+ top:0;
  position: fixed; 
  z-index: 10;
+ box-shadow:0 0 8px #444;
 }
 
 #current-user{
@@ -20,4 +22,9 @@ float: right;
  margin: 0 0 0 auto;
  padding: 10px;
 }
+
+#content{
+    margin-top: 100px; 
+}
+
 
