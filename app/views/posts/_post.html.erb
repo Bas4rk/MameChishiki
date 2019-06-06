@@ -10,7 +10,8 @@
     <h4 class="card-title"><%= post.title %></h4>
     <p class="card-text"><%= post.content %></p>
     <% if post.image.attached? %>
-      <%= image_tag(post.image, :class => "intense") %> 
+      <!--    <%= image_tag(post.image, :class => "intense") %>  -->
+    <%= link_to image_tag(post.image),post.image, :rel => "lightbox"%>
     <% end %>
   </div>
   <div class="card-footer">	
