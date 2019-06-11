@@ -3,6 +3,9 @@
   <div class = "profile_top">
     <% if @user.image.attached? %>
       <%= link_to image_tag(@user.image),@user.image, :rel => "lightbox"%>
+    <% else %>
+      <%= link_to image_tag(asset_pack_path 'media/images/dafault.jpg'),asset_pack_path('media/images/dafault.jpg'), :rel => "lightbox" %>  
+      <!--   <img src="<%= asset_pack_path 'media/images/dafault.jpg' %>" /> -->
     <% end %>
       <h1><%= @user.username %></h1>
   </div>
@@ -14,9 +17,9 @@
 <div class = "posts">
   <%=@user.username %>のページです。
   <h2><%= @user.username %></h2>
-  <ol>
+  <ul>
     <%= render @posts %>
-  </ol>
+  </ul>
   <%= will_paginate @posts %>
 </div>
 </div>

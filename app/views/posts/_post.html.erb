@@ -1,22 +1,28 @@
-<div class="card bg-light mb-3">
-  <div class="card-header">
-    <div class="circle-avatar">
-      <% if @user.image.attached? %>
-        <%= link_to image_tag(@user.image), @user %>
+<li>
+  <div class="card bg-light mb-3">
+    <div class="card-header">
+      <div class="circle-avatar">
+        <% if @user.image.attached? %>
+          <%= link_to image_tag(@user.image), @user %>
+        <% else %>
+          <%= link_to image_tag(asset_pack_path 'media/images/dafault.jpg'), @user %>  
+        <% end %>
+        <%= link_to  post.user.username, @user %>
+        <!--  <%= link_to '編集',post, method: :patch%> -->
+      </div>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title"><%= post.title %></h4>
+      <p class="card-text"><%= post.content %></p>
+      <% if post.image.attached? %>
+      <%= link_to image_tag(post.image),post.image, :rel => "lightbox"%>
       <% end %>
-      <%= link_to  post.user.username, @user %>
-      <!--  <%= link_to '編集',post, method: :patch%> -->
+    </div>
+    <div class="card-footer">   
+      <%= time_ago_in_words(post.created_at) %>前に作成
+      <% if @user == current_user %>
+        <%= link_to '削除',post, method: :delete %>
+      <% end %>
     </div>
   </div>
-  <div class="card-body">
-    <h4 class="card-title"><%= post.title %></h4>
-    <p class="card-text"><%= post.content %></p>
-    <% if post.image.attached? %>
-    <%= link_to image_tag(post.image),post.image, :rel => "lightbox"%>
-    <% end %>
-  </div>
-  <div class="card-footer">	
-    <%= time_ago_in_words(post.created_at) %>前に作成
-    <%= link_to '削除',post, method: :delete %>
-  </div>
-</div>
+</li>
