@@ -1,19 +1,18 @@
-<div class = "content">
-<%=@user.username %>のページです。
-
-<div class = "profile" >
-  <h2><%= @user.username %></h2>
-  <div class = "circle-avatar" >
-     <% if @user.image.attached? %>
-       <%= link_to image_tag(@user.image),@user.image, :rel => "lightbox"%>
-     <% end %>
-     
-       <%= @user.introduction%>
-  </div>
+<div class = "profile">
+  <% if @user.image.attached? %>
+    <%= link_to image_tag(@user.image),@user.image, :rel => "lightbox"%>
+  <% end %>
+    <h1><%= @user.username %></h1>
+    <%= @user.introduction%>
 </div>
-<ol>
-  <%= render @posts %>
-</ol>
+<div class = "profile_body">
+</div>
 
- <%= will_paginate @posts %>
+<div class = "content">
+  <%=@user.username %>のページです。
+  <h2><%= @user.username %></h2>
+  <ol>
+    <%= render @posts %>
+  </ol>
+  <%= will_paginate @posts %>
 </div>
