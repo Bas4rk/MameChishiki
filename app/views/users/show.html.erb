@@ -1,6 +1,14 @@
 <div class = "content">
 <%=@user.username %>のページです。
 
+<div class = "profile" >
+  <h2><%= @user.username %></h2>
+  <div class = "circle-avatar" >
+     <% if @user.image.attached? %>
+       <%= link_to image_tag(@user.image),@user.image, :rel => "lightbox"%>
+     <% end %>
+  </div>
+</div>
 <ol>
   <%= render @posts %>
 </ol>
