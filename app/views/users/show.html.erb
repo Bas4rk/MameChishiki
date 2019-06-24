@@ -17,9 +17,9 @@
 <div class = "posts">
   <%=@user.username %>のページです。
   <h2><%= @user.username %></h2>
-  <ol>
+  <ul>
     <%= render @posts %>
-  </ol>
+  </ul>
   <%= will_paginate @posts %>
 </div>
 </div>
