@@ -1,3 +1,17 @@
 <li>
-  <%= link_to user.username,user%> 
+  <div class="card bg-light mb-3">
+    <div class="card-header">
+      <div class="circle-avatar">
+        <% if user.image.attached? %>
+          <%= link_to image_tag(user.image), user %>
+        <% else %>
+          <%= link_to image_tag(asset_pack_path 'media/images/dafault.jpg'), user %>  
+        <% end %>
+        <%= link_to  user.username,user %>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="card-text"><%= user.introduction %></p>
+    </div>
+  </div>
 </li>
