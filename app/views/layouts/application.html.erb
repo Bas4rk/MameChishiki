@@ -13,6 +13,7 @@
   </head>
 
   <body>
+    <div class="box">
     <header>
       <nav class="navbar navbar-dark bg-dark">
         <!--  <a class="navbar-brand" href="#">Mame chishiki</a> -->
@@ -67,5 +68,8 @@
     <!--    <p class="alert"><%= alert %></p> -->
 
       <%= yield %>
+      <div class="realtimeuserscounter realtimeuserscounter--styled"></div>
+      <script src="https://realtimeusers.bycontrast.co/realtimeusers.js"></script>
+    </div>
   </body>
 </html>
