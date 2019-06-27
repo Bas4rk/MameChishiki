@@ -90,3 +90,14 @@ text-align: center !important;
  ul {
   list-style-type: none;
 }
+
+.box{
+  position: relative;
+}
+
+.realtimeuserscounter{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
