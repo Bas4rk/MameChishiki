@@ -45,49 +45,35 @@
   </div>
 </div>
 
+
+<div class ="comment-toukou">
+  <h2>コメント投稿</h2><br>
+  <div class="comment-toukou-form">
+    <div class="card-header ">
+      <div class="circle-avatar">
+        <% if current_user.image.attached? %>
+          <%= link_to image_tag(current_user.image), current_user , { :class => "inlink" }%>
+        <% else %>
+          <%= link_to image_tag(asset_pack_path 'media/images/dafault.jpg'), current_user , { :class => "inlink" }%>  
+        <% end %>
+        <%= link_to  current_user.username, current_user , { :class => "inlink" }%>
+      </div>
+    </div>
+    <div class="comment-form">
+      <%= form_for [@post, @comment] do |f| %>
+        <%= f.text_area :content, :placeholder => "コメントを入力してください。"%>
+        <br>
+        <%= f.submit 'コメントする' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <div class="comment-itiran">
   <h2>コメント一覧</h2>
 </div>
-
-<% @comments.each do |c| %>
-  <div>
-   <!-- <a href="/users/<%= @post.user.id %>"><%= c.user.email %></a>
-    <%= c.content %>
-    <hr>-->
-    <div class="show-post-content">
-      <div class="card bg-light mb-3">
-        <div class="card-header">
-          <div class="circle-avatar">
-            <% if c.user.image.attached? %>
-              <%= link_to image_tag(c.user.image), c.user , { :class => "inlink" }%>
-            <% else %>
-              <%= link_to image_tag(asset_pack_path 'media/images/dafault.jpg'), c.user , { :class => "inlink" }%>  
-            <% end %>
-            <%= link_to c.user.username, c.user , { :class => "inlink" }%>
-          </div>
-        </div>
-        <div class="card-body">
-          <p class="card-text"><%= c.content %></p>
-         <!-- <% if @post.image.attached? %>
-            <%= link_to image_tag(@post.image),@post.image, { :class => "inlink" , :rel => "lightbox"}%>
-          <% end %> -->
-        </div>
-        <div class="card-footer">
-          <%= time_ago_in_words(c.created_at) %>前にコメント
-          <% if c.user == current_user %>
-            <%= link_to '削除',  post_comment_path(@post.id, c), { :class => "inlink" , method: :delete} %>  
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
-
-<div class ="comment-toukou">
-<h2>コメント投稿</h2><br>
-
-<%= form_for [@post, @comment] do |f| %>
-  <%= f.text_field :content %>
-  <br>
-  <%= f.submit 'コメントする' %>
-<% end %>
+<ul>
+  <li>
+    <%= render @comments %>
+  </li>
+</ul>

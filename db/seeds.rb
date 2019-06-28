@@ -9,7 +9,11 @@ User.create!(username: "tarezou",
              email: "tarezou@gmail.com",
              password: "123456")
 
-50.times do |n|
+User.create!(username: "syamu",
+             email: "syamu@gmail.com",
+             password: "123456")
+
+20.times do |n|
   name  = "test_user_#{n+1}"
   email = "example#{n+1}@gmail.com"
   password = "123456"
@@ -19,7 +23,7 @@ User.create!(username: "tarezou",
 end
 
 users = User.order(:created_at).take(6)
-50.times do |n|
+20.times do |n|
   title = "sampletitle#{n}"
   content = "sampletext#{n}"
   users.each { |user| user.posts.create!(title: title,content: content)}

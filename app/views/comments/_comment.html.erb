@@ -1,0 +1,26 @@
+    <div class="show-post-content">
+      <div class="card bg-light mb-3">
+        <div class="card-header">
+          <div class="circle-avatar">
+            <% if comment.user.image.attached? %>
+              <%= link_to image_tag(comment.user.image), comment.user , { :class => "inlink" }%>
+            <% else %>
+              <%= link_to image_tag(asset_pack_path 'media/images/dafault.jpg'), comment.user , { :class => "inlink" }%>  
+            <% end %>
+            <%= link_to comment.user.username, comment.user , { :class => "inlink" }%>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><%= comment.content %></p>
+         <!-- <% if @post.image.attached? %>
+            <%= link_to image_tag(@post.image),@post.image, { :class => "inlink" , :rel => "lightbox"}%>
+          <% end %> -->
+        </div>
+        <div class="card-footer">
+          <%= time_ago_in_words(comment.created_at) %>前にコメント
+          <% if comment.user == current_user %>
+            <%= link_to '削除',  post_comment_path(@post.id, comment), { :class => "inlink" , method: :delete} %>  
+          <% end %>
+        </div>
+      </div>
+    </div>
