@@ -1,1 +1,93 @@
-    <%= render @post %>
+
+
+<div class="show-post-profile">
+  <div class = "profile">
+    <div class = "profile_top">
+      <% if @user.image.attached? %>
+        <%= link_to image_tag(@user.image),@user.image, :rel => "lightbox"%>
+      <% else %>
+        <%= link_to image_tag(asset_pack_path 'media/images/dafault.jpg'),asset_pack_path('media/images/dafault.jpg'), :rel => "lightbox" %>  
+        <!--   <img src="<%= asset_pack_path 'media/images/dafault.jpg' %>" /> -->
+      <% end %>
+        <h1><%= @user.username %></h1>
+    </div>
+    <div class = "profile_intro">
+      <%= @user.introduction%>  
+    </div>
+  </div>
+</div>
+<div class="show-post-content">
+  <div class="card bg-light mb-3">
+    <!--    <a class="link" href="#"></a>-->
+    <div class="card-header">
+      <div class="circle-avatar">
+        <% if @user.image.attached? %>
+          <%= link_to image_tag(@user.image), @user , { :class => "inlink" }%>
+        <% else %>
+          <%= link_to image_tag(asset_pack_path 'media/images/dafault.jpg'), @user , { :class => "inlink" }%>  
+        <% end %>
+        <%= link_to @post.user.username, @user , { :class => "inlink" }%>
+      </div>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title"><%= @post.title %></h4>
+      <p class="card-text"><%= @post.content %></p>
+      <% if @post.image.attached? %>
+        <%= link_to image_tag(@post.image),@post.image, { :class => "inlink" , :rel => "lightbox"}%>
+      <% end %>
+    </div>
+    <div class="card-footer">
+      <%= time_ago_in_words(@post.created_at) %>前に作成
+      <% if @user == current_user %>
+        <%= link_to '削除', @post, { :class => "inlink" , method: :delete} %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="comment-itiran">
+  <h2>コメント一覧</h2>
+</div>
+
+<% @comments.each do |c| %>
+  <div>
+   <!-- <a href="/users/<%= @post.user.id %>"><%= c.user.email %></a>
+    <%= c.content %>
+    <hr>-->
+    <div class="show-post-content">
+      <div class="card bg-light mb-3">
+        <div class="card-header">
+          <div class="circle-avatar">
+            <% if c.user.image.attached? %>
+              <%= link_to image_tag(c.user.image), c.user , { :class => "inlink" }%>
+            <% else %>
+              <%= link_to image_tag(asset_pack_path 'media/images/dafault.jpg'), c.user , { :class => "inlink" }%>  
+            <% end %>
+            <%= link_to c.user.username, c.user , { :class => "inlink" }%>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><%= c.content %></p>
+         <!-- <% if @post.image.attached? %>
+            <%= link_to image_tag(@post.image),@post.image, { :class => "inlink" , :rel => "lightbox"}%>
+          <% end %> -->
+        </div>
+        <div class="card-footer">
+         <!-- <%= time_ago_in_words(@post.created_at) %>前に作成
+          <% if c.user == current_user %>
+            <%= link_to '削除', @post, { :class => "inlink" , method: :delete} %> 
+          <% end %> -->
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class ="comment-toukou">
+<h2>コメント投稿</h2><br>
+
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.text_field :content %>
+  <br>
+  <%= f.submit 'コメントする' %>
+<% end %>

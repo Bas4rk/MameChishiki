@@ -138,15 +138,42 @@ ul {
   position: fixed;
 }
 
-.card_body {
+.card{
   position:relative;
+  z-index: 1;
 }
 
-.link .card_body{
- display: block;
- position: absolute;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
+.card .link{
+position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-indent:-999px;
+    z-index: 2;
+}
+
+.card .inlink{
+ position: relative; 
+    z-index: 3;
+}
+
+
+.show-post-profile{
+  padding-top: 150px;
+}
+
+.show-post-content{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.comment-itiran {
+ text-align: center;
+ margin-top: 150px;
+}
+
+.comment-toukou{
+ text-align: center;
 }

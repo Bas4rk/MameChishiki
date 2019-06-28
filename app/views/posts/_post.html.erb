@@ -1,26 +1,27 @@
   <div class="card bg-light mb-3">
+    <!--    <a class="link" href="#"></a>-->
+    <%= link_to "", post_path(post) ,{ :class => "link"} %>
     <div class="card-header">
       <div class="circle-avatar">
         <% if @user.image.attached? %>
-          <%= link_to image_tag(@user.image), @user %>
+          <%= link_to image_tag(@user.image), @user , { :class => "inlink" }%>
         <% else %>
-          <%= link_to image_tag(asset_pack_path 'media/images/dafault.jpg'), @user %>  
+          <%= link_to image_tag(asset_pack_path 'media/images/dafault.jpg'), @user , { :class => "inlink" }%>  
         <% end %>
-        <%= link_to  post.user.username, @user %>
+        <%= link_to  post.user.username, @user , { :class => "inlink" }%>
       </div>
     </div>
     <div class="card-body">
-      <a class="link" href="#"></a>
       <h4 class="card-title"><%= post.title %></h4>
       <p class="card-text"><%= post.content %></p>
       <% if post.image.attached? %>
-      <%= link_to image_tag(post.image),post.image, :rel => "lightbox"%>
+        <%= link_to image_tag(post.image),post.image, { :class => "inlink" , :rel => "lightbox"}%>
       <% end %>
     </div>
     <div class="card-footer">
       <%= time_ago_in_words(post.created_at) %>前に作成
       <% if @user == current_user %>
-        <%= link_to '削除',post, method: :delete %>
+        <%= link_to '削除', post, { :class => "inlink" , method: :delete} %>
       <% end %>
     </div>
  </div>
