@@ -44,10 +44,46 @@ img{
   height: 100vh;
   text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, .5);
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-  background-image: url("../images/wallpaper2.jpg");
+  //background-image: url("../images/wallpaper2.jpg");
   background-size:  cover;
   background-repeat:  no-repeat;      
   color: white;
+}
+
+@media screen and (min-width:30em) and ( max-width:37.5em) {
+    /* 480px~600px（スマホ横） */
+  .text-center{
+    background-image: url("../images/sumaho.jpg");
+  }
+}
+
+@media screen and (min-width:37.5em) and ( max-width:48em) {
+    /*　600px~768px（タブレット）　*/
+  .text-center{
+    background-image: url("../images/sumaho.jpg");
+  }
+
+}
+
+@media screen and (min-width:48em) and ( max-width:60em) {
+    /*　768px~960px（タブレット）　*/
+  .text-center{
+    background-image: url("../images/pc3.jpg");
+  }
+}
+
+@media screen and (min-width:60em) and ( max-width:80em) {
+    /*　960px~1280px（小型PC）　*/
+  .text-center{
+    background-image: url("../images/pc3.jpg");
+  }
+}
+
+@media screen and (min-width:80em) {
+    /*　1280px~（大型PC） */
+  .text-center{
+    background-image: url("../images/pc3.jpg");
+  }
 }
 
 .circle-avatar img {
@@ -95,9 +131,10 @@ text-align: center !important;
   position: relative;
 }
 
-.realtimeuserscounter{
+.lower_right{
   position: absolute;
   right: 0;
   bottom: 0;
   position: fixed;
 }
+
