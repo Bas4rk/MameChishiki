@@ -1,11 +1,25 @@
 class LikesController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
-    @post.likes.create(user_id: current_user)
+    unless @post.iine?(current_user)
+      @post.iine(current_user)
+      @post.reload
+      respond_to do |format|
+        format.html { redirect_to request.referrer || root_url }
+        format.js
+      end
+    end
   end
 
   def destroy
-    @post = Post.find(params[:id]).post
-    @post.likes.find_by(user_id: current_user.id).destroy
+    @post = Like.find(params[:id]).post
+    if @post.iine?(current_user)
+      @post.uniine(current_user)
+      @post.reload
+      respond_to do |format|
+        format.html { redirect_to request.referrer || root_url }
+        format.js
+      end
+    end
   end
 end
