@@ -12,6 +12,7 @@
   <div class = "profile_intro">
     <%= @user.introduction%>  
   </div>
+  <%= link_to "#{@user.username}がいいねした投稿", user_likes_path(@user) %>
 </div>
 
 <div class = "posts">

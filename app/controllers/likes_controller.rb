@@ -22,4 +22,14 @@ class LikesController < ApplicationController
       end
     end
   end
+
+  def index
+    @user = User.find(params[:user_id])
+    @likes = Like.where(user_id: params[:user_id])
+    @posts =[]
+    @likes.each do |like|
+      post =  Post.find(like.post_id)
+      @posts.push(post)
+    end
+  end
 end
