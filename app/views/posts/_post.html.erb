@@ -1,14 +1,13 @@
   <div class="card bg-light mb-3">
-    <!--    <a class="link" href="#"></a>-->
     <%= link_to "", post_path(post) ,{ :class => "link"} %>
     <div class="card-header">
       <div class="circle-avatar">
-        <% if @user.image.attached? %>
-          <%= link_to image_tag(@user.image), @user , { :class => "inlink" }%>
+        <% if post.user.image.attached? %>
+          <%= link_to image_tag(post.user.image), post.user , { :class => "inlink" }%>
         <% else %>
-          <%= link_to image_tag(asset_pack_path 'media/images/dafault.jpg'), @user , { :class => "inlink" }%>  
+          <%= link_to image_tag(asset_pack_path 'media/images/dafault.jpg'), post.user , { :class => "inlink" }%>  
         <% end %>
-        <%= link_to  post.user.username, @user , { :class => "inlink" }%>
+        <%= link_to  post.user.username, post.user , { :class => "inlink" }%>
       </div>
     </div>
     <div class="card-body">
@@ -25,7 +24,7 @@
         <%= post.comments.count %>件のコメント
       </div>
        <%= render "likes/like",post: post %> 
-      <% if @user == current_user %>
+      <% if post.user == current_user %>
         <%= link_to '削除', post, { :class => "inlink" , method: :delete} %>
       <% end %>
     </div>
