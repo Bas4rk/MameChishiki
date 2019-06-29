@@ -62,7 +62,7 @@
       </div>
     </div>
     <div class="comment-form">
-      <%= form_for [@post, @comment] do |f| %>
+      <%= form_for([@post, @comment], remote: true) do |f| %>
         <%= f.text_area :content, :placeholder => "コメントを入力してください。"%><br>
         <%= f.file_field :image %><br>
         <%= f.submit 'コメントする' %>
@@ -71,11 +71,6 @@
   </div>
 </div>
 
-<div class="comment-itiran">
-  <h2>コメント一覧</h2>
+<div id="comment-list">
+  <%= render ('comments/comment_list') %>
 </div>
-<ul>
-  <li>
-    <%= render @comments %>
-  </li>
-</ul>

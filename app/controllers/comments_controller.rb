@@ -3,20 +3,31 @@ class CommentsController < ApplicationController
   def create
    @post=Post.find(params[:post_id])
    @comment = @post.comments.build(comment_params)
+   @comments = @post.comments
    @comment.user_id = current_user.id
    if @comment.save
-      redirect_back(fallback_location: root_path)
+      respond_to do |format|
+        format.html { redirect_to request.referrer || root_url }
+        format.js
+      end
     else
-      redirect_back(fallback_location: root_path)
+      respond_to do |format|
+        format.html { redirect_to request.referrer || root_url }
+        format.js
+      end
     end
   end
 
   def destroy
     @post=Post.find(params[:post_id])
     @comment = @post.comments.find_by(id: params[:id])
+    @comments = @post.comments
     @comment.destroy
     flash[:success] = "comment deleted"
-    redirect_to request.referrer || root_url
+    respond_to do |format|
+      format.html { redirect_to request.referrer || root_url }
+      format.js
+    end
   end
   private
 
