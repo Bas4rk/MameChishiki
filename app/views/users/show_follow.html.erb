@@ -17,13 +17,11 @@
    <%= render 'follow_form' %>
 </div>
 
-<div class = "posts">
-  <ul>
-    <li>
-      <%= render @posts %> 
-    </li>
+<% if @users.any? %>
+<div class = "content">
+  <p><%= @title %>一覧ページです。</p>
+  <ul class ="users" >
+    <%= render @users %>
   </ul>
-  <%= will_paginate @posts %>
 </div>
-
-</div>
+<% end %>
