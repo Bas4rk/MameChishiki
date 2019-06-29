@@ -2,13 +2,14 @@ Rails.application.routes.draw do
   get 'static_pages/home'
   root 'static_pages#home'
   devise_for :users, :controllers => {
- :registrations => 'users/registrations'
-}
+   :registrations => 'users/registrations'
+  }
   resources  :users, :only => [:show,:index,:edit,:update] do
     resources :likes, :only => [:index]
   end
   resources :posts, :only => [:show,:new,:create,:destroy] do
     resources :comments, :only =>  [:create,:destroy]
+    resources :likes, :only => [:show]
   end
   resources :likes, only: [:create, :destroy]
  # get '/users/:id' => 'users#show'

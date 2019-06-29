@@ -12,6 +12,7 @@
     <div class = "profile_intro">
       <%= @user.introduction%>  
     </div>
+  <%= link_to "#{@user.username}がいいねした投稿", user_likes_path(@user) %>
   </div>
 </div>
 <div class="show-post-content">
@@ -37,6 +38,9 @@
     <div class="card-footer" id="post-<%= @post.id %>" data-post-id="<%= @post.id %>">
       <%= time_ago_in_words(@post.created_at) %>前に作成
       <%= render "likes/like",post: @post %>
+      <% if @post.likes_count %>
+        <%= link_to "いいねしたユーザー" , post_like_path(@post) %><br>
+      <% end %>
       <% if @user == current_user %>
         <%= link_to '削除', @post, { :class => "inlink" , method: :delete} %>
       <% end %>
