@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :posts, :only => [:show,:new,:create,:destroy] do
     resources :comments, :only =>  [:create,:destroy]
   end
+  resources :likes, only: [:create, :destroy]
  # get '/users/:id' => 'users#show'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+ # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

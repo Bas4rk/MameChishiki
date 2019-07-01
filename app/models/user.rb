@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :username,presence: true
   validates :email,presence: true
   has_many :posts,dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :comments
   has_one_attached :image
 end

@@ -24,6 +24,7 @@
         <%= image_tag(asset_pack_path 'media/images/comment.png') %>
         <%= post.comments.count %>件のコメント
       </div>
+      <%= render "likes/like",post: post %>
       <% if @user == current_user %>
         <%= link_to '削除', post, { :class => "inlink" , method: :delete} %>
       <% end %>

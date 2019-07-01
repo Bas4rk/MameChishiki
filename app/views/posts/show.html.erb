@@ -1,5 +1,3 @@
-
-
 <div class="show-post-profile">
   <div class = "profile">
     <div class = "profile_top">
@@ -45,7 +43,6 @@
   </div>
 </div>
 
-
 <div class ="comment-toukou">
   <h2>コメント投稿</h2><br>
   <div class="comment-toukou-form">
@@ -61,8 +58,8 @@
     </div>
     <div class="comment-form">
       <%= form_for [@post, @comment] do |f| %>
-        <%= f.text_area :content, :placeholder => "コメントを入力してください。"%>
-        <br>
+        <%= f.text_area :content, :placeholder => "コメントを入力してください。"%><br>
+        <%= f.file_field :image %><br>
         <%= f.submit 'コメントする' %>
       <% end %>
     </div>
