@@ -20,6 +20,10 @@
     </div>
     <div class="card-footer">
       <%= time_ago_in_words(post.created_at) %>前に作成
+      <div class="comment-counts">
+        <%= image_tag(asset_pack_path 'media/images/comment.png') %>
+        <%= post.comments.count %>件のコメント
+      </div>
       <% if @user == current_user %>
         <%= link_to '削除', post, { :class => "inlink" , method: :delete} %>
       <% end %>

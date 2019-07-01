@@ -73,10 +73,10 @@
           <% end %> -->
         </div>
         <div class="card-footer">
-         <!-- <%= time_ago_in_words(@post.created_at) %>前に作成
+          <%= time_ago_in_words(c.created_at) %>前にコメント
           <% if c.user == current_user %>
-            <%= link_to '削除', @post, { :class => "inlink" , method: :delete} %> 
-          <% end %> -->
+            <%= link_to '削除',  post_comment_path(@post.id, c), { :class => "inlink" , method: :delete} %>  
+          <% end %>
         </div>
       </div>
     </div>
