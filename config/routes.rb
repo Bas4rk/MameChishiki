@@ -5,7 +5,9 @@ Rails.application.routes.draw do
  :registrations => 'users/registrations'
 }
   resources  :users, :only => [:show,:index,:edit,:update]
-  resources :posts, :except => [:index]
+  resources :posts, :only => [:show,:new,:create,:destroy] do
+    resources :comments, :only =>  [:create]
+  end
  # get '/users/:id' => 'users#show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

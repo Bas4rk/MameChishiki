@@ -18,7 +18,9 @@
   <%=@user.username %>のページです。
   <h2><%= @user.username %></h2>
   <ul>
-    <%= render @posts %>
+    <li>
+      <%= render @posts %> 
+    </li>
   </ul>
   <%= will_paginate @posts %>
 </div>
